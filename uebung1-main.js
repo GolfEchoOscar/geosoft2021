@@ -24,6 +24,33 @@ const rightTopCorner = polygon[2]; //right Top corner of the polygon
 
 //functions
 
+/**
+ *This function uses the JSON linestring input from the *textinput field and parse it and displays the type and coordinates of the JSON *object
+ *@param 
+ *@returns parsed type and coordinates of the JSON obj
+ */
+ function useOwnInput(){
+	 document.getElementById("statusInfo").innerHTML = "Linestring received..."; //updating status
+	 
+	 var txt = document.getElementById("linestringInput").value; //stores the input as a string
+	 var obj = JSON.parse(txt); //parsing the string and storing it
+	 document.getElementById("displayingConversions").innerHTML = obj.type + ", " + obj.coordinates; //displaying the type and coordinates
+	 //document.getElementById("submit").addEventListener("click", useOwnInput);
+ }
+
+
+
+/**
+ *This function uses JSON obj and converts it back to a linestring
+ *@param 
+ *@returns JSON as linestring and displays it
+ */
+function backConversion(){
+	document.getElementById("statusInfo").innerHTML = "Converting JSON to object..."; //updating status
+	
+	var backToString = JSON.stringify(obj); //stringify the previously saved object
+	document.getElementById("displayingConversions").innerHTML = "Linestring: " + backToString; //diyplaying the linestring
+}
 
 /**
  * This function converts coordinates in degrees into coordinates in radians.
