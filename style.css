@@ -1,0 +1,25 @@
+
+body {
+    background-color: rgb(10,84, 59);}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    font-family: Verdana, sans-serif;}
+
+p {
+    text-align: justify;
+    width: 75%;
+    color: rgb(255, 120, 100);
+    line-height: 1.8;
+    font-family: Verdana, sans-serif;}
+    
+table, th, td {
+    border: 2px solid rgb(255, 255, 255);
+    width: 75%;
+    height: 70px;
+    padding: 10px;
+    border-collapse: collapse;
+    color: rgb(255, 255, 255);
+    font-family: Verdana, sans-serif;
+    text-align: center;}
