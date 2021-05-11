@@ -1,20 +1,18 @@
-<!-- @author: Dominik Zubel-->
+<!-- @author: Dominik Zubel, Tobias Brand-->
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Wetterbericht</title>
 <link rel="stylesheet" href="weather.css">
+<script async src="domWeatherVisualize.js"></script>
+<script async src="weatherInfo.js"></script>
 </head>
 
 <body>
 	<h1>Current weather information</h1>
 	<p>To get the latest weather information, simply click on the button below.</p>
-	<button id="weatherBtn" onclick="getLocation()"><span>Show location</span></button>
-	
-	<p id="informationDisplay">Information will be displayed here</p>
-	<p id="informationControlDisplay"></p>
-	
-	<script src="weatherInfo.js"></script>
+	<button id="weatherBtn" onclick="getLocation()"><span>Get weather forecast</span></button>
+
 </body>
 </html>
