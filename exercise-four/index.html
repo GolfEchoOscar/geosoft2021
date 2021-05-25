@@ -1,0 +1,27 @@
+<!-- @author: Dominik Zubel-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Interaktive Karte</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+</script>
+<link rel="stylesheet" href="iMap.css">
+<script src="...\draw\DrawToolbar.js"></script>
+</head>
+
+<body>
+	<h1>Interactive map</h1>
+	<p id="infoDisplay"></p>
+	<!-- button for testing locator and weather compatibility-->
+	<button id="locBtn" onclick="getLocation()"><span>Show my location</span></button>
+	
+	<div id="plcHolder"></div>
+	<div id="mapid"></div> 
+	<script src="iMapEngine.js"></script>
+
+</body>
+</html>
