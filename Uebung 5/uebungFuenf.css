@@ -1,0 +1,14 @@
+/*author: Dominik Zubel */
+
+h1, p, table, div, a{
+    font-family:  Verdana, sans-serif;
+}
+#subtitle{
+    font-size: 22px;
+}
+#map { 
+    height: 650px; 
+}
+#apiField{
+    width: 280px;
+}
