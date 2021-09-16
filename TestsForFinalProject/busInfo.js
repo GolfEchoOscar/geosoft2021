@@ -42,9 +42,13 @@ function startApiReq() {
 		if(xhr.status===200){
 			jsonHaltestellen=JSON.parse(xhr.responseText);
 			//console.log(jsonHaltestellen);
-			let arr = Object.entries(jsonHaltestellen);
 			//JSON.stringify(jsonHaltestellen);
-			printingArea.innerHTML = Object.fromEntries(arr);
+			
+			//JSONArray busStops = obj.getJSONArray("nr");
+			//let text = arr.toString();
+			
+			printingArea.innerHTML = xhr.responseText;
+			
 			console.log(arr);
 			
 			//var jsonObject = JSON.parse(xhReq.responseText);
@@ -55,9 +59,3 @@ function startApiReq() {
 	}
 	xhr.send();
 }
-
-/**
- * starts a xhr request to get the city name for given coordinates, also calls createWeatherWidget
- * @param {*} lat coordiante/ number
- * @param {*} lng coordiante/ number
- */
