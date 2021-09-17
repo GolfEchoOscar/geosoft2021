@@ -9,6 +9,8 @@ var reqTerm = ""; //placeholder for the later compound expression (Api Request)
 let jsonHaltestellen;
 var geocoder;
 let cityJSON;
+var xTest;
+var coords;
 
 
 /**
@@ -40,23 +42,54 @@ function showPosition(position) {
 		xhr.open("GET", "https://rest.busradar.conterra.de/prod/haltestellen");
 		xhr.onload=function(){
 			if(xhr.status===200){
-				jsonHaltestellen=JSON.parse(xhr.responseText);
-				//console.log(jsonHaltestellen);
-				//JSON.stringify(jsonHaltestellen);
-			
-				//JSONArray busStops = obj.getJSONArray("nr");
-				//let text = arr.toString();
-			
-				//TEST printingArea.innerHTML = xhr.responseText;
+			jsonHaltestellen=JSON.parse(xhr.responseText);
 				let arr = Object.entries(jsonHaltestellen);
 				let arr2 = arr[1];
-				let arr3 = arr2[1]; //Enthaelt jetzt nur noch Array mit den 1119 verschiedenen properties
-				//var elem = arr.shift();
-				console.log(jsonHaltestellen);
-				printingArea.innerHTML = JSON.stringify(arr3);
+				let arr3 = arr2[1]; //Enthaelt jetzt nur noch 1119 Arrays mit den verschiedenen properties
 				
-				//flatten(jsonHaltestellen);
-				//var jsonObject = JSON.parse(xhReq.responseText);
+				console.log(jsonHaltestellen); //Testzwecke
+				
+				printingArea.innerHTML = JSON.stringify(arr3[0]);
+				//console.log(arr3);
+				var allBusStops = arr3[0];
+				var coords= allBusStops.geometry.coordinates[0];
+				console.log(coords); //Testzwecke
+				
+				testingArea.innerHTML = JSON.stringify(coords);
+				
+				
+				
+				//Hilfvariable h
+				let h = [];
+				/*
+				* Iteriert durch alle Bushaltestellen und speichert die Entfernung aller Bushaltestellen zur Sehenswürdigkeit 
+				*
+				* To-Do: Ergänzung eines weiteren gespeicherten Werts zum Identifizieren der Bushaltestelle (2D Array?)
+				*/
+				for(i=0; i< arr3.length -1; i ++) {
+					
+					var xAxes = arr3[i].geometry.coordinates[1];
+					var yAxes = arr3[i].geometry.coordinates[0];
+
+					
+					var from = turf.point([51.953029, 7.614783]);
+					var to = turf.point([xAxes, yAxes]);
+					var options = {units: 'kilometers'};
+					var distance = turf.distance(from, to, options);
+					h[i] = distance;
+					var entfernung = distance.toFixed(3);
+					//console.log(entfernung);
+					
+					/*if(distance < vgl){
+						vgl = distance;
+					}*/
+				} 
+				h.sort(function(a, b){return a - b});
+				//console.log(h);
+				var nearest = h[0];
+				var nearestInMeters = nearest*1000;
+				distanceArea.innerHTML = "Distance to nearest bus stop: " + nearestInMeters.toFixed(0) + " meters.";
+				
 		}
 	}
 	xhr.send();
