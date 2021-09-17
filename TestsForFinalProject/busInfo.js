@@ -35,27 +35,35 @@ function showPosition(position) {
 /**
 * This function starts a request of all bus stops in muenster and stores it in an array.
 */
-function startApiReq() {
-	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://rest.busradar.conterra.de/prod/haltestellen");
-	xhr.onload=function(){
-		if(xhr.status===200){
-			jsonHaltestellen=JSON.parse(xhr.responseText);
-			//console.log(jsonHaltestellen);
-			//JSON.stringify(jsonHaltestellen);
+	function startApiReq() {
+		let xhr = new XMLHttpRequest();
+		xhr.open("GET", "https://rest.busradar.conterra.de/prod/haltestellen");
+		xhr.onload=function(){
+			if(xhr.status===200){
+				jsonHaltestellen=JSON.parse(xhr.responseText);
+				//console.log(jsonHaltestellen);
+				//JSON.stringify(jsonHaltestellen);
 			
-			//JSONArray busStops = obj.getJSONArray("nr");
-			//let text = arr.toString();
+				//JSONArray busStops = obj.getJSONArray("nr");
+				//let text = arr.toString();
 			
-			printingArea.innerHTML = xhr.responseText;
-			
-			console.log(arr);
-			
-			//var jsonObject = JSON.parse(xhReq.responseText);
-			
-		
-			
+				//TEST printingArea.innerHTML = xhr.responseText;
+				let arr = Object.entries(jsonHaltestellen);
+				let arr2 = arr[1];
+				let arr3 = arr2[1]; //Enthaelt jetzt nur noch 1119 Arrays mit den verschiedenen properties
+				//var elem = arr.shift();
+				console.log(jsonHaltestellen);
+				printingArea.innerHTML = JSON.stringify(arr3);
+				
+				//flatten(jsonHaltestellen);
+				//var jsonObject = JSON.parse(xhReq.responseText);
 		}
 	}
 	xhr.send();
 }
+
+/**
+ * starts a xhr request to get the city name for given coordinates, also calls createWeatherWidget
+ * @param {*} lat coordiante/ number
+ * @param {*} lng coordiante/ number
+ */
