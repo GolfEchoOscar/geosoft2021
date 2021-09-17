@@ -50,7 +50,7 @@ function showPosition(position) {
 				//TEST printingArea.innerHTML = xhr.responseText;
 				let arr = Object.entries(jsonHaltestellen);
 				let arr2 = arr[1];
-				let arr3 = arr2[1]; //Enthaelt jetzt nur noch 1119 Arrays mit den verschiedenen properties
+				let arr3 = arr2[1]; //Enthaelt jetzt nur noch Array mit den 1119 verschiedenen properties
 				//var elem = arr.shift();
 				console.log(jsonHaltestellen);
 				printingArea.innerHTML = JSON.stringify(arr3);
