@@ -59,14 +59,16 @@ function showPosition(position) {
 				
 				
 				
-				//Hilfvariable h
+				//Hilfvariable h, um Entfernungen zu speichern und zu Sortierne
 				let h = [];
+				//Hilfvariable k, um Entfernungen zu speichern (in ursprünglicher Anordnung) um nachher die Bushaltestelle wiederzufinden
+				let k = [];
 				/*
 				* Iteriert durch alle Bushaltestellen und speichert die Entfernung aller Bushaltestellen zur Sehenswürdigkeit 
 				*
 				* To-Do: Ergänzung eines weiteren gespeicherten Werts zum Identifizieren der Bushaltestelle (2D Array?)
 				*/
-				for(i=0; i< arr3.length -1; i ++) {
+				for(i=0; i< arr3.length; i ++) {
 					
 					var xAxes = arr3[i].geometry.coordinates[1];
 					var yAxes = arr3[i].geometry.coordinates[0];
@@ -77,6 +79,7 @@ function showPosition(position) {
 					var options = {units: 'kilometers'};
 					var distance = turf.distance(from, to, options);
 					h[i] = distance;
+					k[i] = distance;
 					var entfernung = distance.toFixed(3);
 					//console.log(entfernung);
 					
@@ -87,8 +90,11 @@ function showPosition(position) {
 				h.sort(function(a, b){return a - b});
 				//console.log(h);
 				var nearest = h[0];
+				var indexOfNearest = k.indexOf(nearest);
+				console.log("Index of: " + indexOfNearest); //Testzwecke
+				var nextBusStop = arr3[indexOfNearest].properties.lbez;
 				var nearestInMeters = nearest*1000;
-				distanceArea.innerHTML = "Distance to nearest bus stop: " + nearestInMeters.toFixed(0) + " meters.";
+				distanceArea.innerHTML = "Nearest bus stop: " + nextBusStop + " in " + nearestInMeters.toFixed(0) + " meters.";
 				
 		}
 	}
